@@ -1,6 +1,6 @@
 # pytester-cov
 
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org)
 
 Enforce minimum pytest coverage by individual files, total, or both. Option to exclude directories and files as well.
 
@@ -11,47 +11,50 @@ Enforce minimum pytest coverage by individual files, total, or both. Option to e
 * [`pytest-cov`](https://pypi.org/project/pytest-cov/)
 
 ## Optional Inputs
-* `pytest-root-dir`
-	* root directory to recursively search for .py files
 
-	* by default `pytest --cov` does not run recursively, but will here
+* `pytest-root-dir`
+    * root directory to recursively search for .py files
+
+    * by default `pytest --cov` does not run recursively, but will here
 
 * `pytest-tests-dir`
-	* directory with pytest tests
+    * directory with pytest tests
 
-	* if left empty will identify test(s) dir by default
+    * if left empty will identify test(s) dir by default
 
 * `requirements-file`
-	* requirements filepath for project
+    * requirements filepath for project
 
-	* if left empty will default to `requirements.txt`
+    * if left empty will default to `requirements.txt`
 
 * `cov-omit-list`
-	* list of directories and/or files to ignore
+    * list of directories and/or files to ignore
 
 * `cov-threshold-single`
-	* fail if any single file coverage is less than threshold
+    * fail if any single file coverage is less than threshold
 
 * `cov-threshold-total`
-	* fail if the total coverage is less than threshold
+    * fail if the total coverage is less than threshold
 
 ## Outputs
-* `output-table`
-	* str
 
-  * `pytest --cov` markdown output table
+* `output-table`
+    * str
+
+    * `pytest --cov` markdown output table
 
 * `cov-threshold-single-fail`
-  * boolean
+    * boolean
 
-  * `false` if any single file coverage less than `cov-threshold-single`, else `true`
+    * `false` if any single file coverage less than `cov-threshold-single`, else `true`
 
 * `cov-threshold-total-fail`
-  * boolean
+    * boolean
 
-  * `false` if total coverage less than `cov-threshold-total`, else `true`
+    * `false` if total coverage less than `cov-threshold-total`, else `true`
 
 ## Template workflow file
+
 ```yaml
 # **************************************************************************************************************** #
 # This workflow will install Python dependencies, and run `pytest --cov` on all files recursively from the `pytest-root-dir`
@@ -135,7 +138,7 @@ jobs:
         title: Pytest coverage total falls below minimum ${{ env.COVERAGE_TOTAL }}
         token: ${{secrets.GITHUB_TOKEN}}
         assignees: ${{github.actor}}
-        labels: worflow-failed
+        labels: workflow-failed
         body: ${{ steps.pytester-cov.outputs.output-table }}
 
     - name: Coverage total fail - exit
@@ -151,4 +154,5 @@ jobs:
 ```
 
 ## License
+
 [BSD 3-Clause License](https://github.com/alexanderdamiani/pytester-cov/blob/main/LICENSE)
