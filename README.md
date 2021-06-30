@@ -6,52 +6,38 @@ Enforce minimum pytest coverage by individual files, total, or both. Option to e
 
 ## Python Packages Used
 
-* [`pytest`](https://pypi.org/project/pytest/)
-
-* [`pytest-cov`](https://pypi.org/project/pytest-cov/)
+- [`pytest`](https://pypi.org/project/pytest/)
+- [`pytest-cov`](https://pypi.org/project/pytest-cov/)
 
 ## Optional Inputs
 
-* `pytest-root-dir`
-    * root directory to recursively search for .py files
-
-    * by default `pytest --cov` does not run recursively, but will here
-
-* `pytest-tests-dir`
-    * directory with pytest tests
-
-    * if left empty will identify test(s) dir by default
-
-* `requirements-file`
-    * requirements filepath for project
-
-    * if left empty will default to `requirements.txt`
-
-* `cov-omit-list`
-    * list of directories and/or files to ignore
-
-* `cov-threshold-single`
-    * fail if any single file coverage is less than threshold
-
-* `cov-threshold-total`
-    * fail if the total coverage is less than threshold
+- `pytest-root-dir`
+  - root directory to recursively search for .py files
+  - by default `pytest --cov` does not run recursively, but will here
+- `pytest-tests-dir`
+  - directory with pytest tests
+  - if left empty will identify test(s) dir by default
+- `requirements-file`
+  - requirements filepath for project
+  - if left empty will default to `requirements.txt`
+- `cov-omit-list`
+  - list of directories and/or files to ignore
+- `cov-threshold-single`
+  - fail if any single file coverage is less than threshold
+- `cov-threshold-total`
+  - fail if the total coverage is less than threshold
 
 ## Outputs
 
-* `output-table`
-    * str
-
-    * `pytest --cov` markdown output table
-
-* `cov-threshold-single-fail`
-    * boolean
-
-    * `false` if any single file coverage less than `cov-threshold-single`, else `true`
-
-* `cov-threshold-total-fail`
-    * boolean
-
-    * `false` if total coverage less than `cov-threshold-total`, else `true`
+- `output-table`
+  - str
+  - `pytest --cov` markdown output table
+- `cov-threshold-single-fail`
+  - boolean
+  - `false` if any single file coverage less than `cov-threshold-single`, else `true`
+- `cov-threshold-total-fail`
+  - boolean
+  - `false` if total coverage less than `cov-threshold-total`, else `true`
 
 ## Template workflow file
 
@@ -122,7 +108,7 @@ jobs:
         title: Pytest coverage single falls below minimum ${{ env.COVERAGE_SINGLE }}
         token: ${{secrets.GITHUB_TOKEN}}
         assignees: ${{github.actor}}
-        labels: worflow-failed
+        labels: workflow-failed
         body: ${{ steps.pytester-cov.outputs.output-table }}
 
     - name: Coverage single fail - exit
