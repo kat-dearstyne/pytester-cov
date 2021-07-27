@@ -20,6 +20,7 @@ Enforce minimum pytest coverage by individual files, total, or both. Option to e
 - `requirements-file`
   - requirements filepath for project
   - if left empty will default to `requirements.txt`
+  - necessary to install requirements to run `pytest` inside action
 - `cov-omit-list`
   - list of directories and/or files to ignore
 - `cov-threshold-single`

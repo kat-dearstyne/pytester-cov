@@ -14,7 +14,7 @@ cov_threshold_total_fail=false
 
 # must reinstall requirements in container to prevent ImportErrors
 if test -f "$4"; then
-    $(python3 -m pip install -r $4 --no-cache-dir)
+    $(python3 -m pip install -r $4 --no-cache-dir --user)
 fi
 
 # write omit str list to coverage file
