@@ -95,8 +95,8 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: pytest
-      id: pytest
+    - name: pytester-cov
+      id: pytester-cov
       uses: alexanderdamiani/pytester-cov@v1.2.0
       with:
         pytest-root-dir: '.'
