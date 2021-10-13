@@ -29,6 +29,8 @@ Enforce minimum pytest coverage by individual files, total, or both. Option to e
   - fail if any single file coverage is less than threshold
 - `cov-threshold-total`
   - fail if the total coverage is less than threshold
+- `python-version`
+  - python version to use in docker container, defaults to latest version
 
 ## Outputs
 

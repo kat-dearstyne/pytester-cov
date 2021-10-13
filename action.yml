@@ -12,7 +12,7 @@ inputs:
     required: false
     default: '.'
   pytest-tests-dir:
-    description: 'directory with pytest tests. if left empty will identify test(s) dir by default'
+    description: 'directory with pytest tests, if left empty will identify test(s) dir by default'
     required: false
     default: ''
   cov-omit-list:
@@ -31,6 +31,10 @@ inputs:
     description: 'fail if the total coverage is less than threshold'
     required: false
     default: 0
+  python-version:
+    description: 'python version to use in docker container, defaults to latest version'
+    required: false
+    default: '3'
 outputs:
   output-table: # id of output
     description: 'pytest-cov markdown output table'
@@ -48,3 +52,4 @@ runs:
     - ${{ inputs.requirements-file }}
     - ${{ inputs.cov-threshold-single }}
     - ${{ inputs.cov-threshold-total }}
+    - ${{ inputs.python-version }}
