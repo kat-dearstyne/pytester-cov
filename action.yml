@@ -31,7 +31,7 @@ inputs:
     description: 'fail if the total coverage is less than threshold'
     required: false
     default: 0
-  python-version:
+  python_version:
     description: 'python version to use in docker container, defaults to latest version'
     required: false
     default: '3'
@@ -52,4 +52,4 @@ runs:
     - ${{ inputs.requirements-file }}
     - ${{ inputs.cov-threshold-single }}
     - ${{ inputs.cov-threshold-total }}
-    - ${{ inputs.python-version }}
+    - ${{ inputs.python_version }}
