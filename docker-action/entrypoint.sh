@@ -29,7 +29,13 @@ EOF
 
 # get list recursively of dirs to run pytest-cov on
 find_cmd_str="find $1 -type d"
+
+echo find_cmd_str $find_cmd_str
+
 pytest_dirs=$(eval "$find_cmd_str")
+
+echo pytest_dirs $pytest_dirs
+
 
 # build cov argument for pytest cmd with list of dirs
 pytest_cov_dirs=""
