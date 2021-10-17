@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -l
 
 PYTEST_ROOT_DIR=$1
 PYTEST_TESTS_DIR=$2
