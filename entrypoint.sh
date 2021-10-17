@@ -19,7 +19,6 @@ echo entrypoint top 2 $(ls)
 # and if we need parameterizable values it is a matter of sending them as inputs
 docker build -t docker-action --build-arg python_version="$PYTHON_VERSION" -f /docker-action/Dockerfile \
 . && docker run docker-action \
--v /*:/* \  # pass files to docker container
 $PYTEST_ROOT_DIR $PYTEST_TESTS_DIR $COV_OMIT_LIST $REQUIREMENTS_FILE $COV_THRESHOLD_SINGLE $COV_THRESHOLD_TOTAL
 
 
