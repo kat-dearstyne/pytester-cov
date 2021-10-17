@@ -1,5 +1,3 @@
-#!/bin/sh -l
+#!/bin/bash
 
-version=$(cat /etc/alpine-release)
-
-echo "::set-output name=version::${version}"
+echo Your container args are: "$@"
