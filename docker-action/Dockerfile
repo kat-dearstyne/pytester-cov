@@ -7,13 +7,13 @@ ARG cov_threshold_single
 ARG cov_threshold_total
 ARG python_version
 
-ENV pytest_root_dir
-ENV pytest_tests_dir
-ENV cov_omit_list
-ENV requirements_file
-ENV cov_threshold_single
-ENV cov_threshold_total
-ENV python_version
+ENV pytest_root_dir $pytest_root_dir
+ENV pytest_tests_dir $pytest_tests_dir
+ENV cov_omit_list $cov_omit_list
+ENV requirements_file $requirements_file
+ENV cov_threshold_single $cov_threshold_single
+ENV cov_threshold_total $cov_threshold_total
+ENV python_version $python_version
 
 FROM python:${python_version}
 
