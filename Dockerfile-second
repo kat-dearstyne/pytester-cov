@@ -4,7 +4,7 @@ FROM python:${python_version}
 
 RUN pip install pytest pytest-cov
 
-RUN ls -l
+RUN ls
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY /entrypoint-second.sh /entrypoint-second.sh
@@ -13,7 +13,7 @@ COPY . .
 RUN ["chmod", "+x", "/entrypoint-second.sh"]
 
 RUN pwd
-RUN ls -l
+RUN ls
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint-second.sh"]
