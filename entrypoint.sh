@@ -8,12 +8,12 @@ COV_THRESHOLD_SINGLE=$5
 COV_THRESHOLD_TOTAL=$6
 PYTHON_VERSION=$7
 
-echo entrypoint top 1 $(ls)
+echo entrypoint top 1 $(ls -l)
 
 # cd /docker-action
 echo "creating docker image with python version: $PYTHON_VERSION"
 
-echo entrypoint top 2 $(ls)
+echo entrypoint top 2 $(ls -l)
 
 # here we can make the construction of the image as customizable as we need
 # and if we need parameterizable values it is a matter of sending them as inputs

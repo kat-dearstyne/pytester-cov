@@ -9,7 +9,7 @@ RUN apk add --update --no-cache docker
 RUN ["chmod", "+x", "/entrypoint.sh"]
 
 RUN pwd
-RUN ls
+RUN ls -l
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
