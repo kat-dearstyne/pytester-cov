@@ -2,4 +2,4 @@
 
 echo Your container args are: "$@"
 
-printenv | less
+printenv
