@@ -13,15 +13,8 @@ echo "creating docker image with python version: $PYTHON_VERSION"
 
 # here we can make the construction of the image as customizable as we need
 # and if we need parameterizable values it is a matter of sending them as inputs
-docker build -t docker-action \
---build-arg pytest_root_dir="$PYTEST_ROOT_DIR" \
---build-arg pytest_tests_dir="$PYTEST_TESTS_DIR" \
---build-arg cov_omit_list="$COV_OMIT_LIST" \
---build-arg requirements_file="$REQUIREMENTS_FILE" \
---build-arg cov_threshold_single="$COV_THRESHOLD_SINGLE" \
---build-arg cov_threshold_total="$COV_THRESHOLD_TOTAL" \
---build-arg python_version="$PYTHON_VERSION" \
-. && docker run docker-action
+docker build -t docker-action --build-arg python_version="$PYTHON_VERSION" \
+. && docker run docker-action $PYTEST_ROOT_DIR $PYTEST_TESTS_DIR $COV_OMIT_LIST $REQUIREMENTS_FILE $COV_THRESHOLD_SINGLE $COV_THRESHOLD_TOTAL
 
 
 
