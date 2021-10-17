@@ -2,6 +2,8 @@
 ARG python_version
 FROM python:${python_version}
 
+RUN pip install pytest pytest-cov
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
