@@ -10,7 +10,7 @@ PYTHON_VERSION=$7
 
 echo entrypoint top 1 $(ls)
 
-# cd /docker-action
+cd /docker-action
 echo "creating docker image with python version: $PYTHON_VERSION"
 
 echo entrypoint top 2 $(ls)
