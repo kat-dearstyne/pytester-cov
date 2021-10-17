@@ -8,6 +8,10 @@
 # $5: cov-threshold-single
 # $6: cov-threshold-total
 
+echo "you passed me" $@
+echo $PWD
+echo $(ls)
+
 cov_config_fname=.coveragerc
 cov_threshold_single_fail=false
 cov_threshold_total_fail=false
