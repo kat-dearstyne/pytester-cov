@@ -10,7 +10,7 @@
 
 echo "you passed me" $@
 echo $PWD
-echo $(ls)
+echo entrypoint bottom 1 $(ls)
 
 cov_config_fname=.coveragerc
 cov_threshold_single_fail=false
