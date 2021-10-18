@@ -2,6 +2,7 @@
 FROM alpine:latest
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
+COPY docker-action /docker-action
 COPY entrypoint.sh /entrypoint.sh
 COPY Dockerfile-second /Dockerfile-second
 COPY entrypoint-second.sh /entrypoint-second.sh
