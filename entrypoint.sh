@@ -149,7 +149,7 @@ fi
 
 if [ "$test_failures" == "true" ]; then
   test_failures=true
-else; then
+else
   test_failures=false
 fi
 
