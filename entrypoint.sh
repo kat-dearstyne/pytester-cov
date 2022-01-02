@@ -53,10 +53,12 @@ items_per_row=4
 
 output_table_title=''
 output_table_contents=''
+test_output=''
 file_covs=()
 total_cov=0
 
 for x in $output; do
+  test_output+="$x "
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
       parse_title=true
@@ -161,7 +163,7 @@ output_table_contents="${output_table_contents//$'\r'/'%0D'}"
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
-echo "::set-output name=test-output::$output"
+echo "::set-output name=test-output::$test_output"
 echo "::set-output name=output-table::$output_table_contents"
 echo "::set-output name=cov-threshold-single-fail::$cov_threshold_single_fail"
 echo "::set-output name=cov-threshold-total-fail::$cov_threshold_total_fail"
