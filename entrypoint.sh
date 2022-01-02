@@ -34,8 +34,11 @@ for dir in $pytest_dirs; do
 done
 
 output=$(python3 -m pytest $pytest_cov_dirs --cov-config=.coveragerc $2)
-test_failures=$(python3 test_failures.py $output)
-
+if [[ "$output" == *"$FAILURES"* ]]; then
+  test_failures=true
+else
+  test_failures=false
+fi
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
@@ -145,12 +148,6 @@ elif [ "$total_cov" -gt 70 ] && [ "$total_cov" -le 90 ]; then
   color="green"
 elif [ "$total_cov" -gt 90 ]; then
   color="brightgreen"
-fi
-
-if [ "$test_failures" == "true" ]; then
-  test_failures=true
-else
-  echo ""
 fi
 
 badge="![pytest-coverage-badge](https://img.shields.io/static/v1?label=pytest-coverage🛡️&message=$total_cov%&color=$color)"
