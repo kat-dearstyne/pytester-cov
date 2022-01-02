@@ -150,8 +150,7 @@ fi
 if [ "$test_failures" == "true" ]; then
   test_failures=true
 else
-  echo test_failures
-  test_failures=false
+  echo ""
 fi
 
 badge="![pytest-coverage-badge](https://img.shields.io/static/v1?label=pytest-coverage🛡️&message=$total_cov%&color=$color)"
