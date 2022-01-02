@@ -34,7 +34,7 @@ for dir in $pytest_dirs; do
 done
 
 output=$(python3 -m pytest $pytest_cov_dirs --cov-config=.coveragerc $2)
-echo $output
+test_failures=$(python3 test_failures.py $output)
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
@@ -156,6 +156,8 @@ output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
 
 # set output variables to be used in workflow file
+echo "::set-output name=test-failures::$test_failures"
+echo "::set-output name=test-output::$output"
 echo "::set-output name=output-table::$output_table_contents"
 echo "::set-output name=cov-threshold-single-fail::$cov_threshold_single_fail"
 echo "::set-output name=cov-threshold-total-fail::$cov_threshold_total_fail"

@@ -32,6 +32,10 @@ inputs:
     required: false
     default: 0
 outputs:
+  test-output:
+    description: 'test results'
+  test-failures:
+    description: 'True if there are test failures'
   output-table: # id of output
     description: 'pytest-cov markdown output table'
   cov-threshold-single-fail:
