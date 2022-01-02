@@ -7,6 +7,8 @@ def has_test_failure():
     if result > 0:
         print("true")
         return True
+    print("false")
+    return False
 
 
 if __name__ == '__main__':
