@@ -150,6 +150,7 @@ fi
 if [ "$test_failures" == "true" ]; then
   test_failures=true
 else
+  echo test_failures
   test_failures=false
 fi
 
