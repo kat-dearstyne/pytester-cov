@@ -41,7 +41,7 @@ else
   test_failures=false
 fi
 
-output="$output""$(coverage report -i)"
+cov_output="$(coverage report -i)"
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
@@ -56,12 +56,11 @@ items_per_row=4
 
 output_table_title=''
 output_table_contents=''
-test_output=''
+test_output="$output""$cov_output"
 file_covs=()
 total_cov=0
 
-for x in $output; do
-  test_output+="$x "
+for x in $cov_output; do
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
       parse_title=true
@@ -126,7 +125,7 @@ for x in $output; do
   output_table+="$x"
 done
 
-echo "$output"
+echo test_output: "$test_output"
 echo file_covs: "${file_covs[*]}"
 
 # remove last file-cov b/c it's total-cov
@@ -171,7 +170,7 @@ output_table_contents="${output_table_contents//'%'/'%25'}"
 output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
 
-echo $output_table_contents
+echo table: "$output_table_contents"
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
