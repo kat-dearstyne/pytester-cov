@@ -41,7 +41,7 @@ else
   test_failures=false
 fi
 
-cov_output=$(coverage report -i)
+cov_output="$(coverage report -i)"
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
