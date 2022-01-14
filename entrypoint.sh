@@ -12,13 +12,12 @@ cov_config_fname=.coveragerc
 cov_threshold_single_fail=false
 cov_threshold_total_fail=false
 
-echo Python version:
-python3 --version
-
 # must reinstall requirements in container to prevent ImportErrors
 if test -f "$4"; then
     $(python3 -m pip install -r $4 --no-cache-dir --user)
 fi
+
+python3 -m pip install coverage
 
 # write omit str list to coverage file
 cat << EOF > $cov_config_fname
@@ -36,7 +35,8 @@ for dir in $pytest_dirs; do
   pytest_cov_dirs+="--cov=${dir} "
 done
 
-output=$(pytest $pytest_cov_dirs --cov-config=.coveragerc $2)
+#output=$(coverage run manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
+output=$(coverage run manage.py test $2)
 if [[ "$output" == *"FAILURES"* ]]; then
   test_failures=true
 else
