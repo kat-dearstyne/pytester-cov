@@ -18,6 +18,7 @@ if test -f "$4"; then
 fi
 
 python3 -m pip install coverage
+python3 -c "import nltk; nltk.download('stopwords')"
 
 # write omit str list to coverage file
 cat << EOF > $cov_config_fname
