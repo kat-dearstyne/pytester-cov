@@ -158,15 +158,6 @@ fi
 badge="![pytest-coverage-badge](https://img.shields.io/static/v1?label=pytest-coverage🛡️&message=$total_cov%&color=$color)"
 output_table_contents="${badge}${output_table_contents}"
 
-# github actions truncates newlines, need to do replace
-# https://github.com/actions/create-release/issues/25
-output_table_contents="${output_table_contents//'%'/'%25'}"
-output_table_contents="${output_table_contents//$'\n'/'%0A'}"
-output_table_contents="${output_table_contents//$'\r'/'%0D'}"
-
-test_output="${test_output//'%'/'%25'}"
-test_output="${test_output//$'\n'/'%0A'}"
-test_output="${test_output//$'\r'/'%0D'}"
 
 echo "======================================================"
 echo "test-failures::$test_failures"
@@ -187,6 +178,17 @@ echo
 echo "======================================================"
 echo "cov-threshold-total-fail::$cov_threshold_total_fail"
 echo "======================================================"
+
+# github actions truncates newlines, need to do replace
+# https://github.com/actions/create-release/issues/25
+output_table_contents="${output_table_contents//'%'/'%25'}"
+output_table_contents="${output_table_contents//$'\n'/'%0A'}"
+output_table_contents="${output_table_contents//$'\r'/'%0D'}"
+
+test_output="${test_output//'%'/'%25'}"
+test_output="${test_output//$'\n'/'%0A'}"
+test_output="${test_output//$'\r'/'%0D'}"
+
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
