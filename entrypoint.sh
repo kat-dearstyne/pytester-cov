@@ -62,11 +62,8 @@ file_covs=()
 total_cov=0
 
 for x in $cov_output; do
-  if [[ $x =~ ^-+$ && $x != '--' && $parse_contents != true ]]; then
-    #if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
-    #  parse_title=true
-    #  echo Found title
-    #else
+  if [[ $x =~ ^-+$ && $x != '--' ]]; then
+    if [[ $parse_contents != true ]]; then
       output_table_title+="$x "
 
       parse_title=false
@@ -76,8 +73,8 @@ for x in $cov_output; do
       output_table_contents+="
 | File | Total | Missed | Coverage |
 | ------ | ------ | ------ | ------ |"
-      continue
-    #fi
+    fi
+    continue
   fi
 
   if [ "$parse_contents" = true ]; then
@@ -111,14 +108,9 @@ for x in $cov_output; do
 
       if [ $item_cnt = 0 ]; then
         output_table_contents+="
-\`\`\`"
-      fi
-
-      output_table_contents+="| $x "
-      
-      
-      if [ $item_cnt = 0 ]; then
-        output_table_contents+="\`\`\`"
+| \`\`\`$x\`\`\` "
+      else
+        output_table_contents+="| $x "
       fi
 
       item_cnt=$((item_cnt+1))
