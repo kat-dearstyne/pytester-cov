@@ -111,14 +111,14 @@ for x in $cov_output; do
 
       if [ $item_cnt = 0 ]; then
         output_table_contents+="
-```"
+\`\`\`"
       fi
 
       output_table_contents+="| $x "
       
       
       if [ $item_cnt = 0 ]; then
-        output_table_contents+="```"
+        output_table_contents+="\`\`\`"
       fi
 
       item_cnt=$((item_cnt+1))
