@@ -70,6 +70,10 @@ for x in $cov_output; do
 
       parse_title=false
       parse_contents=true
+      parsed_content_header=true
+      
+      output_table_contents+="| File | Total | Missed | Coverage |
+| ------ | ------ | ------ | ------ |"
       continue
     #fi
   fi
