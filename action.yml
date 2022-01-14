@@ -43,8 +43,11 @@ outputs:
   cov-threshold-total-fail:
     description: 'boolean if total coverage less than cov-threshold-total'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
   args:
     - ${{ inputs.pytest-root-dir }}
     - ${{ inputs.pytest-tests-dir }}
