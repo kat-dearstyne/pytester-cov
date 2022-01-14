@@ -126,7 +126,8 @@ for x in $cov_output; do
   output_table+="$x"
 done
 
-echo file_covs: $file_covs
+echo $cov_output
+echo file_covs: "${file_covs[*]}"
 
 # remove last file-cov b/c it's total-cov
 unset 'file_covs[${#file_covs[@]}-1]'
@@ -169,6 +170,8 @@ output_table_contents="${badge}${output_table_contents}"
 output_table_contents="${output_table_contents//'%'/'%25'}"
 output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
+
+echo $output_table_contents
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
