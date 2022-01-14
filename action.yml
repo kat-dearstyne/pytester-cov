@@ -43,7 +43,6 @@ outputs:
   cov-threshold-total-fail:
     description: 'boolean if total coverage less than cov-threshold-total'
 runs:
-  runs:
   using: "composite"
   steps:
     - run: ${{ github.action_path }}/entrypoint.sh
