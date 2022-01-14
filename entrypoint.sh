@@ -63,17 +63,17 @@ total_cov=0
 for x in $cov_output; do
 echo Parsing: "$x"
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
-    if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
-      parse_title=true
-      echo Found title
-    else
+    #if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
+    #  parse_title=true
+    #  echo Found title
+    #else
       output_table_title+="$x "
       echo Found content
 
       parse_title=false
       parse_contents=true
       continue
-    fi
+    #fi
   fi
 
   if [ "$parse_contents" = true ]; then
