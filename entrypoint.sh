@@ -17,9 +17,6 @@ if test -f "$4"; then
     $(python3 -m pip install -r $4 --no-cache-dir --user)
 fi
 
-python3 -m pip install coverage
-python3 -c "import nltk; nltk.download('stopwords')"
-
 # write omit str list to coverage file
 cat << EOF > $cov_config_fname
 [run]
@@ -44,7 +41,7 @@ else
   test_failures=false
 fi
 
-coverage report
+coverage report -i
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
