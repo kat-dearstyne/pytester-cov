@@ -72,7 +72,8 @@ for x in $cov_output; do
       parse_contents=true
       parsed_content_header=true
       
-      output_table_contents+="| File | Total | Missed | Coverage |
+      output_table_contents+="
+| File | Total | Missed | Coverage |
 | ------ | ------ | ------ | ------ |"
       continue
     #fi
@@ -196,7 +197,7 @@ test_output="${test_output//$'\r'/'%0D'}"
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
-echo "::set-output name=test-output::$test_output"
+echo "::set-output name=test-output::\`\`\`$test_output\`\`\`"
 echo "::set-output name=output-table::$output_table_contents"
 echo "::set-output name=cov-threshold-single-fail::$cov_threshold_single_fail"
 echo "::set-output name=cov-threshold-total-fail::$cov_threshold_total_fail"
