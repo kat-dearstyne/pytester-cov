@@ -56,11 +56,12 @@ items_per_row=4
 
 output_table_title=''
 output_table_contents=''
-test_output="$output""$cov_output"
+test_output="$output""\n""$cov_output"
 file_covs=()
 total_cov=0
 
 for x in $cov_output; do
+echo Parsing: "$x"
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
       parse_title=true
@@ -125,6 +126,7 @@ for x in $cov_output; do
   output_table+="$x"
 done
 
+echo failure: "$test_failures"
 echo test_output: "$test_output"
 echo file_covs: "${file_covs[*]}"
 
@@ -169,8 +171,6 @@ output_table_contents="${badge}${output_table_contents}"
 output_table_contents="${output_table_contents//'%'/'%25'}"
 output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
-
-echo table: "$output_table_contents"
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
