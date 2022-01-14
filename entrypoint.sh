@@ -35,7 +35,7 @@ done
 
 #output=$(coverage run manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
 output=$(coverage run manage.py test $2 2>&1)
-if [[ "$output" == *"FAILURES"* ]]; then
+if [[ "$output" == *"FAILED"* ]]; then
   test_failures=true
 else
   test_failures=false
@@ -65,8 +65,10 @@ for x in $cov_output; do
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
       parse_title=true
+      echo Found title
     else
       output_table_title+="$x "
+      echo Found content
 
       parse_title=false
       parse_contents=true
@@ -124,6 +126,8 @@ for x in $cov_output; do
   output_table+="$x"
 done
 
+echo file_covs: $file_covs
+
 # remove last file-cov b/c it's total-cov
 unset 'file_covs[${#file_covs[@]}-1]'
 
@@ -136,6 +140,8 @@ for file_cov in "${file_covs[@]}"; do
     cov_threshold_single_fail=true
   fi
 done
+
+echo total_cov: $total_cov
 
 # check if total_cov exceeds threshold
 if [ "$total_cov" -lt $6 ]; then
