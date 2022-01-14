@@ -61,14 +61,12 @@ file_covs=()
 total_cov=0
 
 for x in $cov_output; do
-echo Parsing: "$x"
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     #if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
     #  parse_title=true
     #  echo Found title
     #else
       output_table_title+="$x "
-      echo Found content
 
       parse_title=false
       parse_contents=true
@@ -126,10 +124,6 @@ echo Parsing: "$x"
   output_table+="$x"
 done
 
-echo failure: "$test_failures"
-echo test_output: "$test_output"
-echo file_covs: "${file_covs[*]}"
-
 # remove last file-cov b/c it's total-cov
 unset 'file_covs[${#file_covs[@]}-1]'
 
@@ -142,8 +136,6 @@ for file_cov in "${file_covs[@]}"; do
     cov_threshold_single_fail=true
   fi
 done
-
-echo total_cov: "$total_cov"
 
 # check if total_cov exceeds threshold
 if [ "$total_cov" -lt $6 ]; then
@@ -171,6 +163,26 @@ output_table_contents="${badge}${output_table_contents}"
 output_table_contents="${output_table_contents//'%'/'%25'}"
 output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
+
+echo "======================================================"
+echo "test-failures::$test_failures"
+echo "======================================================"
+echo
+echo "======================================================"
+echo "test-output::$test_output"
+echo "======================================================"
+echo
+echo "======================================================"
+echo "output-table::$output_table_contents"
+echo "======================================================"
+echo
+echo "======================================================"
+echo "cov-threshold-single-fail::$cov_threshold_single_fail"
+echo "======================================================"
+echo
+echo "======================================================"
+echo "cov-threshold-total-fail::$cov_threshold_total_fail"
+echo "======================================================"
 
 # set output variables to be used in workflow file
 echo "::set-output name=test-failures::$test_failures"
