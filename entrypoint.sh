@@ -36,7 +36,7 @@ for dir in $pytest_dirs; do
   pytest_cov_dirs+="--cov=${dir} "
 done
 
-output=$(python3 manage.py pytest $pytest_cov_dirs --cov-config=.coveragerc $2)
+output=$(python3 manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
 if [[ "$output" == *"FAILURES"* ]]; then
   test_failures=true
 else
