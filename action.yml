@@ -38,19 +38,19 @@ inputs:
 outputs:
   test-output:
     description: 'test results'
-    value: ${{ steps.run.outputs.test-output }}
+    value: ${{ steps.run-script.outputs.test-output }}
   test-failures:
     description: 'True if there are test failures'
-    value: ${{ steps.run.outputs.test-failures }}
+    value: ${{ steps.run-script.outputs.test-failures }}
   output-table: # id of output
     description: 'pytest-cov markdown output table'
-    value: ${{ steps.run.outputs.output-table }}
+    value: ${{ steps.run-script.outputs.output-table }}
   cov-threshold-single-fail:
     description: 'boolean if any single file coverage less than cov-threshold-single'
-    value: ${{ steps.run.outputs.cov-threshold-single-fail }}
+    value: ${{ steps.run-script.outputs.cov-threshold-single-fail }}
   cov-threshold-total-fail:
     description: 'boolean if total coverage less than cov-threshold-total'
-    value: ${{ steps.run.outputs.cov-threshold-total-fail }}
+    value: ${{ steps.run-script.outputs.cov-threshold-total-fail }}
 runs:
   using: "composite"
   steps:
