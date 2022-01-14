@@ -44,6 +44,8 @@ else
   test_failures=false
 fi
 
+cat .coverage
+
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
    rm $cov_config_fname
