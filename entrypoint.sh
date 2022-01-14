@@ -164,6 +164,10 @@ output_table_contents="${output_table_contents//'%'/'%25'}"
 output_table_contents="${output_table_contents//$'\n'/'%0A'}"
 output_table_contents="${output_table_contents//$'\r'/'%0D'}"
 
+test_output="${test_output//'%'/'%25'}"
+test_output="${test_output//$'\n'/'%0A'}"
+test_output="${test_output//$'\r'/'%0D'}"
+
 echo "======================================================"
 echo "test-failures::$test_failures"
 echo "======================================================"
