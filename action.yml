@@ -54,7 +54,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - id: run-script
+      run: |
         ${{ inputs.set-up }}
         ${{ github.action_path }}/entrypoint.sh "${{ inputs.pytest-root-dir }}" "${{ inputs.pytest-tests-dir }}" "${{ inputs.cov-omit-list }}" "${{ inputs.requirements-file }}" "${{ inputs.cov-threshold-single }}" "${{ inputs.cov-threshold-total }}"
       shell: bash
