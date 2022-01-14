@@ -41,7 +41,7 @@ else
   test_failures=false
 fi
 
-coverage report -i
+cov_output=$(coverage report -i)
 
 # remove pytest-coverage config file
 if [ -f $cov_config_fname ]; then
@@ -60,7 +60,7 @@ test_output=''
 file_covs=()
 total_cov=0
 
-for x in $output; do
+for x in $cov_output; do
   test_output+="$x "
   if [[ $x =~ ^-+$ && $x != '--' ]]; then
     if [[ "$parse_title" = false && "$parse_contents" = false ]]; then
