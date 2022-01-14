@@ -34,7 +34,7 @@ for dir in $pytest_dirs; do
 done
 
 #output=$(coverage run manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
-output=$(coverage run manage.py test $2)
+output=$(coverage run manage.py test $2 2>&1)
 if [[ "$output" == *"FAILURES"* ]]; then
   test_failures=true
 else
