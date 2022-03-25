@@ -61,6 +61,6 @@ runs:
     - id: run-script
       run: |
         ${{ inputs.set-up }}
-        ${{ github.action_path }}/entrypoint.sh "${{ inputs.pytest-root-dir }}" "${{ inputs.pytest-tests-dir }}" "${{ inputs.cov-omit-list }}" "${{ inputs.requirements-file }}" "${{ inputs.cov-threshold-single }}" "${{ inputs.cov-threshold-total }}" "${{ inputs.marks }}"
+        ${{ github.action_path }}/entrypoint.sh "${{ inputs.pytest-root-dir }}" "${{ inputs.pytest-tests-dir }}" "${{ inputs.cov-omit-list }}" "${{ inputs.requirements-file }}" "${{ inputs.cov-threshold-single }}" "${{ inputs.cov-threshold-total }}" "${{ inputs.tags }}"
       shell: bash
 
