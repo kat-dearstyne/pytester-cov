@@ -7,6 +7,7 @@
 # $4: requirements filepath
 # $5: cov-threshold-single
 # $6: cov-threshold-total
+# $7: marks
 
 cov_config_fname=.coveragerc
 cov_threshold_single_fail=false
@@ -33,8 +34,14 @@ for dir in $pytest_dirs; do
   pytest_cov_dirs+="--cov=${dir} "
 done
 
+# Check if marks were passed in and build marks variable
+marks=""
+if [[ ! -z "${7// }" ]]; then
+  marks="-m \"$7\""
+fi
+
 #output=$(coverage run manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
-output="$(coverage run manage.py test $2 2>&1)"
+output="$(coverage run manage.py test $2 $marks 2>&1)"
 if [[ "$output" == *"FAILED"* ]]; then
   test_failures=true
 else
