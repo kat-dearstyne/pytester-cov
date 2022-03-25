@@ -34,8 +34,8 @@ inputs:
   set-up:
     description: 'command to perform for setup'
     required: true
-  marks:
-    description: 'marks to use as the pytest filter'
+  tags:
+    description: 'tags to use as the django test filter'
     required: false
     default: ''
 
