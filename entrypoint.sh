@@ -41,6 +41,7 @@ for tag in $tags; do
 done
 
 #output=$(coverage run manage.py test $pytest_cov_dirs --cov-config=.coveragerc $2)
+echo "Test command: coverage run manage.py test $2 $tags 2>&1"
 output="$(coverage run manage.py test $2 $tags 2>&1)"
 if [[ "$output" == *"FAILED"* ]]; then
   test_failures=true
