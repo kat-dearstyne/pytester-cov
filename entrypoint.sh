@@ -36,7 +36,7 @@ done
 
 # Check if tags were passed in and build tags variable
 tags=""
-for tag in $tags; do
+for tag in $7; do
   tags+="--tag $tag "
 done
 
